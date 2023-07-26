@@ -1,3 +1,8 @@
+# Generate, Build
+bin/
+*.out
+*.test
+
 # Go workspace file
 go.work
 
