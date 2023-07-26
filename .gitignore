@@ -1,0 +1,10 @@
+# Go workspace file
+go.work
+
+# IDE, Editor
+.idea/
+.vscode/
+.goland/
+
+# macOS specific files
+.DS_Store
