@@ -1,0 +1,80 @@
+run:
+  timeout: 5m
+  skip-dirs: []
+  skip-files: []
+
+
+linters:
+  disable-all: true
+  enable:
+    # Default
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+
+    # Optional
+    - bodyclose
+    - dogsled
+    - dupl
+    - exportloopref
+    - funlen
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - goprintffuncname
+    - gosec
+    - lll
+    - misspell
+    - nakedret
+    - noctx
+    - prealloc
+    - revive
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - whitespace
+
+
+linters-settings:
+  # Default
+  errcheck:
+    check-type-assertions: true
+  govet:
+    check-shadowing: true
+    settings:
+      printf: []
+
+  # Optional
+  dupl:
+    threshold: 100
+  funlen:
+    lines: -1
+    statements: 50
+  goconst:
+    min-len: 2
+    min-occurrences: 3
+  gocyclo:
+    min-complexity: 15
+  gofmt:
+    rewrite-rules:
+      - pattern: "interface{}"
+        replacement: "any"
+  goimports:
+    local-prefixes: "<GO_MODULE>"
+  lll:
+    line-length: 140
+    tab-width: 4
+  misspell:
+    locale: US
+
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
