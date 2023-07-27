@@ -1,2 +1,7 @@
 # seed
-A repository for storing basic templates of various languages, tools, and frameworks, making it easy to quickly start a project.
+放置不同語言的專案樣板，便於快速開始新專案。
+
+採用不同分支隔離語言、工具、框架，格式為：
+
+- `<LNAG>` ：該語言最基本的內容（例如： `go` ）
+- `<LANG>-<SOMETHING>` ：該語言搭配特殊目的、工具、框架（例如： `go-echo` ）
