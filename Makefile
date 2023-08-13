@@ -16,6 +16,11 @@ run: $(BIN_DIR)/$(BINARY_NAME)
 test:
 	@go test -v -race ./...
 
+.PHONY: clear
+clear:
+	@rm -rf $(BIN_DIR)
+	@rm cover.out
+
 .PHONY: cover
 cover:
 	@go test -v -race -cover -coverpkg ./... -coverprofile cover.out ./...

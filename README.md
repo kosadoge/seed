@@ -34,6 +34,9 @@ $ make run
 # 執行專案所有的測試
 $ make test
 
+# 清除不同指令產生出的檔案
+$ make clear
+
 # 執行專案所有測試以外，會生成覆蓋率檔案（ cover.out ）並計算出目前總覆蓋率
 $ make cover
 
