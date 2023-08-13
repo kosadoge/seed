@@ -68,6 +68,14 @@ audit:
     @govulncheck ./...
 ```
 
+### 關於測試覆蓋率
+Go 只支援有被測試到的 Package 進行覆蓋率檢查，所以覆蓋率只拿**被測試的 Package** 來算，而非以**專案全部的 Package** ，故算出的覆蓋率會跟預期的不同。
+
+解法有兩種：
+
+1. 所有 Package 下面都加一個 `*_test.go` ，裡面不用有測試（已有測試的不用）
+2. 透過環境變數開 `GOEXPERIMENT=nocoverageredesign` 來使用新的實作
+
 
 ## .golangci.yml
 主要參考[官方](https://github.com/golangci/golangci-lint/blob/master/.golangci.yml)的設定並做一些調整。
