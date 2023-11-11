@@ -21,6 +21,7 @@ linters:
     - dupl
     - exportloopref
     - funlen
+    - gocheckcompilerdirectives
     - gochecknoinits
     - goconst
     - gocritic
