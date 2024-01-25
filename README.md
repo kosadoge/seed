@@ -100,6 +100,19 @@ audit:
     @govulncheck ./...
 ```
 
+### 關於 audit 中的 nilaway
+根據專案 [Repository](https://github.com/uber-go/nilaway) 所說：
+
+> By default, NilAway analyzes all Go code, including the standard libraries and dependencies. This helps NilAway better understand the code form dependencies and reduce its false negatives. However, this would also incur a significant performance cost (only once for drivers with modular support) and increase the number of non-actionable errors in dependencies, for large Go projects with a lot of dependencies.
+
+他們建議使用 `-include-pkgs` 來指定要分析的 Package ：
+
+```shell
+nilaway -include-pkgs="<YOUR_PKG_PREFIX>,<YOUR_PKG_PREFIX_2>" ./...
+```
+
+這依自己需求調整。
+
 ### 關於測試覆蓋率
 Go 只支援有被測試到的 Package 進行覆蓋率檢查，所以覆蓋率只拿**被測試的 Package** 來算，而非以**專案全部的 Package** ，故算出的覆蓋率會跟預期的不同。
 
