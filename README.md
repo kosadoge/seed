@@ -62,14 +62,14 @@ $ make run
 # 執行專案所有的測試
 $ make test
 
-# 清除不同指令產生出的檔案
-$ make clear
-
-# 執行專案所有測試外，還會生成覆蓋率檔案（ cover.out ）並計算出總覆蓋率
-$ make cover
+# 執行專案所有的測試，並會生成覆蓋率檔案來計算總覆蓋率
+$ make test/cover
 
 # 檢查依賴 Module 與 go.sum 內容是否一致（避免 Module 被惡意修改），並進行 Linting 與漏洞檢測
 $ make audit
+
+# 清除專案目錄下的 bin 與 tmp 目錄
+$ make clear
 ```
 
 如果測試檔案（ `*_test.go` ）變動時不需重新編譯，可用 `filter-out` 從 `SRC_FILES` 內過濾掉：
@@ -91,14 +91,7 @@ $ go run <PACKAGE>@<VERSION> <ARGS>
 
 > go 執行 `run` 或 `build` 時可加 `-x` 看執行的指令，雖然 `run` 每次都會編譯，但能利用快取加速
 
-如果覺得 `go run` 不直觀，可改用已裝的執行檔，但版本就需要自己管理：
-
-```makefile
-audit:
-    @go mod tidy
-    @golangci-lint run ./...
-    @govulncheck ./...
-```
+如果覺得 `go run` 不直觀，可改用已裝的執行檔，但版本就需要自己管理。
 
 ### 關於 audit 中的 nilaway
 根據專案 [Repository](https://github.com/uber-go/nilaway) 所說：
