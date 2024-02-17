@@ -9,7 +9,7 @@ $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
 $(TMP_DIR):
 	@mkdir -p $(TMP_DIR)
- 
+
 SRC_FILES := $(shell find . -name "*.go")
 $(BIN_DIR)/$(BINARY_NAME): $(SRC_FILES) | $(BIN_DIR)
 	@go build -o $(BIN_DIR)/$(BINARY_NAME) $(MAIN_PACKAGE_PATH)

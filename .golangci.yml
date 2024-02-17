@@ -50,7 +50,8 @@ linters-settings:
   govet:
     check-shadowing: true
     settings:
-      printf: []
+      printf:
+        funcs: []
 
   # Optional
   dupl:
