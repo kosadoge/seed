@@ -25,7 +25,7 @@ test:
 
 .PHONY: test/cover
 test/cover: | $(TMP_DIR)
-	@go test -v -race -cover -coverpkg ./... -coverprofile $(TMP_DIR)/cover.out ./...
+	@go test -race -coverpkg ./... -coverprofile $(TMP_DIR)/cover.out ./...
 	@go tool cover -func $(TMP_DIR)/cover.out | tail -n 1 | awk '{ print $$3 }'
 
 .PHONY: audit
