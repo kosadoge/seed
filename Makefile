@@ -23,6 +23,11 @@ run: $(BIN_DIR)/$(BINARY_NAME)
 test:
 	@go test -v -race ./...
 
+.PHONY: test/force
+test/force:
+	@go clean -testcache -fuzzcache
+	@go test -v -race ./...
+
 .PHONY: test/cover
 test/cover: | $(TMP_DIR)
 	@go test -race -coverpkg ./... -coverprofile $(TMP_DIR)/cover.out ./...
@@ -35,6 +40,7 @@ audit:
 	@go run go.uber.org/nilaway/cmd/nilaway@latest ./...
 	@go run golang.org/x/vuln/cmd/govulncheck@v1.0.3 ./...
 
-.PHONY: clear
-clear:
+.PHONY: clean
+clean:
 	@rm -rf $(BIN_DIR) $(TMP_DIR)
+	@go clean -cache -modcache -testcache -fuzzcache

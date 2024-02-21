@@ -62,14 +62,17 @@ $ make run
 # 執行專案所有的測試
 $ make test
 
+# 執行專案所有的測試，但會先清除測試相關快取
+$ make test/force
+
 # 執行專案所有的測試，並會生成覆蓋率檔案來計算總覆蓋率
 $ make test/cover
 
 # 檢查依賴 Module 與 go.sum 內容是否一致（避免 Module 被惡意修改），並進行 Linting 與漏洞檢測
 $ make audit
 
-# 清除專案目錄下的 bin 與 tmp 目錄
-$ make clear
+# 清除專案目錄下的 bin 與 tmp 目錄，此外也會清除 Go Build 、 Module 、 Test 等快取資料
+$ make clean
 ```
 
 如果測試檔案（ `*_test.go` ）變動時不需重新編譯，可用 `filter-out` 從 `SRC_FILES` 內過濾掉：
@@ -115,6 +118,16 @@ nilaway -include-pkgs="<YOUR_PKG_PREFIX>,<YOUR_PKG_PREFIX_2>" ./...
 
 1. ~~所有 Package 下面都加一個 `*_test.go` ，裡面不用有測試~~
 2. ~~透過環境變數開 `GOEXPERIMENT=nocoverageredesign` 來使用新的實作~~
+
+### 關於 clean
+會清理掉建構執行檔的 **bin** 目錄與臨時資料放置的 **tmp** 目錄，另外以下幾個 go clean 相關的 flag 各自會清理：
+
+- `-cache` ：清理所有 go build 產生的快取資料
+- `-modcache` ：清理所有下載的 module 快取
+- `-testcache` ：清理所有 go test 產生的快取資料
+- `-fuzzcache` ：清理所有 fuzz test 產生的快取
+
+根據專案性質自己調整需要清理的資料，如果想看實際會清理的資料也能透過 `-n` 來看實際會跑的指令。
 
 
 ## .golangci.yml
