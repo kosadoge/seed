@@ -51,7 +51,7 @@ linters-settings:
     check-shadowing: true
     settings:
       printf:
-        funcs: []
+        funcs:
 
   # Optional
   dupl:
